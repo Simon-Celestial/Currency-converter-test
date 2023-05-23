@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CURRENCY - CONVERTER</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="icon" href="./assets/icons/logo.png">
+</head>
+<body>
+<div class="wrapper">
+    <h1>ENTER "RUB" HERE</h1>
+    <div class="glass">
+        <label for="glassInp">
+            <input type="number" placeholder="0.00" id="glassInp" required>
+        </label>
+    </div>
+    <div class="container">
+        <div class="buttons-container">
+            <button id="dollar">
+                <img src="./assets/icons/dollar.png" alt="dlr">
+            </button>
+            <button id="euro">
+                <img src="./assets/icons/euro.png" alt="euro">
+            </button>
+        </div>
+        <div class="buttons-container">
+            <button id="azn">
+                <img src="./assets/icons/azn.png" alt="azn">
+            </button>
+            <button id="hryvnia">
+                <img src="./assets/icons/hryvnia.png" alt="hryvnia">
+            </button>
+        </div>
+        <div class="container right">
+            <button id="refresh">
+                <img src="./assets/icons/refresh.png" alt="refresh">
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    const dollar = document.querySelector('#dollar'),
+        euro = document.querySelector('#euro'),
+        hryvnia = document.querySelector('#hryvnia'),
+        azn = document.querySelector('#azn'),
+        refresh = document.querySelector('#refresh'),
+        glass = document.querySelector('#glassInp');
+
+    const rates = {
+        dollar: 80.50,
+        euro: 86.50,
+        azn: 47.10,
+        hryvnia: 2.15
+    }
+
+    refresh.addEventListener('click', () => {
+        glass.value = '';
+    })
+
+    function convertCurrency(rate) {
+        const rub = parseFloat(glass.value);
+        const convert = rub / rate;
+        glass.value = (convert.toFixed(2));
+    }
+
+    dollar.addEventListener('click', function () {
+        convertCurrency(rates.dollar);
+    });
+    euro.addEventListener('click', function () {
+        convertCurrency(rates.euro);
+    });
+    azn.addEventListener('click', function () {
+        convertCurrency(rates.azn);
+    });
+    hryvnia.addEventListener('click', function () {
+        convertCurrency(rates.hryvnia);
+    });
+</script>
+</body>
+<!--«Valyuta çeviricisi» tətbiqini yaradın-->
+<!--Çeviricidə rubl üçün bir neçə valyuta məzənnəsi (minimum iki) mövcuddur.-->
+<!--Səhifədə, istifadəçiyə növbəti imkanları verən forma yaradın:-->
+<!--— Siyahıdan valyuta seçmək;-->
+<!--— Çevriləcək məbləğin göstərilməsi.-->
+<!--«Hesablamaq» düyməsinə tıklandıqda, daxil edilən məbləğ yenidən milli valyutaya çevrilir.-->
+<!--Hesablanma nəticəsi ekranda göstərilməlidir.-->
+<!--Layihənin vizual görüntüsünü özünüz müstəqil düşünün.-->
+</html>
